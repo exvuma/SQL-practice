@@ -1,0 +1,32 @@
+/* Put your data in here and query it! */
+CREATE TABLE nail_salon ( 
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            manicurist TEXT,
+            --station_num INTEGER,
+            service TEXT,
+            price INTEGER
+    );
+INSERT INTO nail_salon (manicurist, service, price) VALUES           ("Julie", "manicure", 10);
+INSERT INTO nail_salon (manicurist, service, price) VALUES           ("Sally", "pedicure and manicure", 100);
+INSERT INTO nail_salon (manicurist, service, price) VALUES           ("Linda", "manicure", 30);
+INSERT INTO nail_salon (manicurist, service, price) VALUES           ("Mary", "manicure", 10);
+CREATE TABLE nail_services ( 
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+           -- manicurist TEXT,
+            --station_num INTEGER,
+            service TEXT,
+            price INTEGER
+    );
+----Evaluate priority of member based on price of service
+SELECT COUNT(*),
+    CASE 
+        WHEN price > 50 THEN "platinum"
+        WHEN price > 20 THEN "gold"
+        ELSE "regular"
+    END AS member_status
+FROM nail_salon GROUP BY member_status;
+--------------------------------
+-- Select number of reoccuring clients per service (e.g. if -- Sally comes back for a manicure 3 times that is 1
+-- reoccuring client
+SELECT FROM 
+
